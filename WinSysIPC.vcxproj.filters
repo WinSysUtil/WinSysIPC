@@ -27,6 +27,12 @@
     <ClInclude Include="PipeServer.h">
       <Filter>헤더 파일\Pipe</Filter>
     </ClInclude>
+    <ClInclude Include="PipeClient.h">
+      <Filter>헤더 파일\Pipe</Filter>
+    </ClInclude>
+    <ClInclude Include="IPCAPI.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -34,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="PipeServer.cpp">
       <Filter>소스 파일\Pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeClient.cpp">
+      <Filter>소스 파일\Pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="IPCAPI.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

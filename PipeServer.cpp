@@ -1,8 +1,13 @@
 ﻿#include "PipeServer.h"
 
 
-CPipeServer::CPipeServer(std::wstring& wstrPipeName)
+CPipeServer::CPipeServer()
 {
+}
+
+bool CPipeServer::Create(std::wstring& wstrPipeName)
+{
+    bool nRet = true;
     std::wstring wstrPipePath(L"\\\\.\\pipe\\");
     wstrPipePath.append(wstrPipeName);
 
@@ -14,6 +19,14 @@ CPipeServer::CPipeServer(std::wstring& wstrPipeName)
         1024 * 16,
         0,
         NULL);
+
+    
+    if (m_pipe == INVALID_HANDLE_VALUE)
+    {
+        nRet = false;
+    }
+
+    return nRet;
 }
 
 void CPipeServer::Start()
