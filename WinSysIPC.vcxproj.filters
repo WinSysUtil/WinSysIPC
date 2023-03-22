@@ -13,15 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Pipe">
+      <UniqueIdentifier>{b0a38464-c973-4249-a7fa-b3d9278871fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Pipe">
+      <UniqueIdentifier>{f17ac442-8221-4891-b4c4-f6f969b1a7a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="PipeServer.h">
+      <Filter>헤더 파일\Pipe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeServer.cpp">
+      <Filter>소스 파일\Pipe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
