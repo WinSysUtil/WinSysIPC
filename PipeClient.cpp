@@ -58,16 +58,6 @@ bool CPipeClient::Create(std::wstring& wstrPipeName, DWORD dwTimeOut)
         }
     }
 
-    if (nRet) {
-        DWORD dwPipeMode = PIPE_READMODE_MESSAGE;
-        if (!SetNamedPipeHandleState(m_hPipe, &dwPipeMode, NULL, NULL)) {
-            CloseHandle(m_hPipe);
-            m_hPipe = INVALID_HANDLE_VALUE;
-            // 에러 처리 코드
-            nRet = false;
-        }
-    }
-
     return nRet;
 }
 
