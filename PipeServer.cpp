@@ -31,7 +31,7 @@ bool CPipeServer::Create(std::wstring& wstrPipeName)
 
 void CPipeServer::Start()
 {
-    m_bStop = TRUE;
+    m_bStop = FALSE;
     char buffer[1024] = { 0, };
     while (true && FALSE == m_bStop) {
         DWORD bytesRead;
