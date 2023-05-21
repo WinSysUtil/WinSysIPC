@@ -31,12 +31,26 @@ public:
     CPipeServer();
 
     /**
+     * \brief Named Pipe Server 소멸자.
+     * 
+     */
+    virtual ~CPipeServer();
+
+
+    /**
      * 파이프를 생성한다..
      * 
      * \param wstrPipeName Named Pipe 이름.
      * \return 
      */
     virtual bool Create(std::wstring& wstrPipeName);
+
+    /**
+     * 생성된 파이프를 삭제한다.
+     * 
+     * \return 
+     */
+    virtual bool Delete();
 
     /**
      * \brief Server 시작.
@@ -61,8 +75,9 @@ public:
     virtual void ErrorHandler();
 
 private:
+    std::wstring m_strPipeName;
     BOOL m_bStop;
-    HANDLE m_pipe; ///< Named Pipe 핸들.
+    HANDLE m_hPipe; ///< Named Pipe 핸들.
     std::function<void(const std::string&)> m_messageReceivedCallback; ///< Message Received Callback.
 
     /**
