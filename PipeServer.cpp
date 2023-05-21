@@ -1,7 +1,7 @@
 ﻿#include "PipeServer.h"
 
 
-CPipeServer::CPipeServer()
+CPipeServer::CPipeServer() : m_bStop(FALSE)
 {
 }
 
@@ -31,8 +31,9 @@ bool CPipeServer::Create(std::wstring& wstrPipeName)
 
 void CPipeServer::Start()
 {
-    char buffer[1024];
-    while (true) {
+    m_bStop = TRUE;
+    char buffer[1024] = { 0, };
+    while (true && FALSE == m_bStop) {
         DWORD bytesRead;
         if (ReadFile(m_pipe, buffer, sizeof(buffer), &bytesRead, NULL) && bytesRead)
         {
@@ -44,6 +45,11 @@ void CPipeServer::Start()
             ErrorHandler();
         }
     }
+}
+
+void CPipeServer::Stop()
+{
+    m_bStop = TRUE;
 }
 
 void CPipeServer::SetMessageReceivedCallback(const std::function<void(const std::string&)>& callback)

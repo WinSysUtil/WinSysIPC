@@ -44,6 +44,12 @@ public:
     virtual void Start();
 
     /**
+     * \brief Server 중단.
+     * 
+     */
+    virtual void Stop();
+
+    /**
      * \brief Message Received Callback 등록.
      * \param callback 등록할 콜백 함수.
      */
@@ -55,6 +61,7 @@ public:
     virtual void ErrorHandler();
 
 private:
+    BOOL m_bStop;
     HANDLE m_pipe; ///< Named Pipe 핸들.
     std::function<void(const std::string&)> m_messageReceivedCallback; ///< Message Received Callback.
 
