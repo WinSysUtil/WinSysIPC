@@ -161,12 +161,16 @@
     <ClInclude Include="IPCAPI.h" />
     <ClInclude Include="PipeClient.h" />
     <ClInclude Include="PipeServer.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="IPCAPI.cpp" />
     <ClCompile Include="PipeClient.cpp" />
     <ClCompile Include="PipeServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinSysIPC.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

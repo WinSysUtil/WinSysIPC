@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <Windows.h>
-#include <string>
 #include <functional>
+#include <vector>
 #pragma hdrstop
 
 /** :: Example Code 
@@ -67,7 +67,7 @@ public:
      * \brief Message Received Callback 등록.
      * \param callback 등록할 콜백 함수.
      */
-    virtual void SetMessageReceivedCallback(const std::function<void(const std::string&)>& callback);
+    virtual void SetMessageReceivedCallback(const std::function<void(const std::vector<BYTE>&)>& callback);
 
     /**
      * \brief 에러 핸들러.
@@ -78,11 +78,11 @@ private:
     std::wstring m_strPipeName;
     BOOL m_bStop;
     HANDLE m_hPipe; ///< Named Pipe 핸들.
-    std::function<void(const std::string&)> m_messageReceivedCallback; ///< Message Received Callback.
+    std::function<void(const std::vector<BYTE>&)> m_messageReceivedCallback; ///< Message Received Callback.
 
     /**
      * \brief Message Received Callback.
      * \param message 받은 메시지.
      */
-    virtual void MessageReceivedCallback(const std::string& message);
+    virtual void MessageReceivedCallback(const std::vector<BYTE>& packet);
 };

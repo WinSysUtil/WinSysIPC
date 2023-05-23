@@ -18,7 +18,6 @@ bool CPipeServer::Create(std::wstring& wstrPipeName)
 
     m_strPipeName = wstrPipePath;
 
-
     m_hPipe = CreateNamedPipeW(wstrPipePath.c_str(),
         PIPE_ACCESS_DUPLEX,
         PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT,
@@ -63,8 +62,8 @@ void CPipeServer::Start()
         DWORD bytesRead;
         if (ReadFile(m_hPipe, buffer, sizeof(buffer), &bytesRead, NULL) && bytesRead)
         {
-            std::string message(buffer, bytesRead);
-            MessageReceivedCallback(message);
+            std::vector<BYTE> packet(buffer, buffer + bytesRead);
+            MessageReceivedCallback(packet);
         }
         else
         {
@@ -78,7 +77,7 @@ void CPipeServer::Stop()
     m_bStop = TRUE;
 }
 
-void CPipeServer::SetMessageReceivedCallback(const std::function<void(const std::string&)>& callback)
+void CPipeServer::SetMessageReceivedCallback(const std::function<void(const std::vector<BYTE>&)>& callback)
 {
     m_messageReceivedCallback = callback;
 }
@@ -97,9 +96,9 @@ void CPipeServer::ErrorHandler()
     }
 }
 
-void CPipeServer::MessageReceivedCallback(const std::string& message)
+void CPipeServer::MessageReceivedCallback(const std::vector<BYTE>& packet)
 {
     if (m_messageReceivedCallback) {
-        m_messageReceivedCallback(message);
+        m_messageReceivedCallback(packet);
     }
 }
