@@ -14,7 +14,7 @@ bool CPipeServer::Create(std::wstring& wstrPipeName)
 {
     bool nRet = true;
     std::wstring wstrPipePath(L"\\\\.\\pipe\\");
-    wstrPipePath.append(m_strPipeName);
+    wstrPipePath.append(wstrPipeName);
 
     m_strPipeName = wstrPipePath;
 
